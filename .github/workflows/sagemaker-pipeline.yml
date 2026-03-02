@@ -10,9 +10,9 @@ on:
 env:
   AWS_REGION: us-east-1
   ECR_REPOSITORY: practica-ci-cd
-  S3_INPUT: s3://practica.mlops.2026/ejemplo.studio/
-  S3_OUTPUT: s3://practica.mlops.2026/ejemplo.studio/processed/
-  SAGEMAKER_ROLE_ARN: arn:aws:iam::421041021233:role/sagemaker-execution-practica-ci-cd
+  S3_INPUT: s3://sonia-practicamlops/data/raw/
+  S3_OUTPUT: s3://sonia-practicamlops/data/processed/
+  SAGEMAKER_ROLE_ARN: arn:aws:iam::742563278972:role/service-role/AmazonSageMaker-ExecutionRole-20260220T215328
 
 jobs:
   run-processing-job:
