@@ -1,5 +1,12 @@
 # 🚢 Proyecto Titanic ML - Predicción de Supervivencia
+👩‍🎓 Fork académico desarrollado por Sonia Avilés Sacoto como parte de la práctica final de CI/CD + MLOps.
 
+Este repositorio es un fork del proyecto original de Ivan Hurtado y fue extendido con:
+
+- Configuración propia de AWS (ECR, S3, IAM)
+- Ejecución de SageMaker Processing Job
+- Configuración de Secrets en GitHub Actions
+- Pull Request al repositorio principal
 [![Python](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://www.python.org/)
 [![scikit-learn](https://img.shields.io/badge/scikit--learn-1.3%2B-orange.svg)](https://scikit-learn.org/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
@@ -335,7 +342,7 @@ Matriz de Python: 3.9, 3.10, 3.11
 └── (en tags v*) imagen prod     → ECR :prod-latest
 ```
 
-Las imágenes se publican en: `421041021233.dkr.ecr.us-east-1.amazonaws.com/practica-ci-cd`
+Las imágenes se publican en: `742563278972.dkr.ecr.us-east-1.amazonaws.com/practica-ci-cd`
 
 [📖 Documentación detallada](docs/ci-cd/WORKFLOW_DOCKER.md)
 
@@ -349,8 +356,8 @@ Las imágenes se publican en: `421041021233.dkr.ecr.us-east-1.amazonaws.com/prac
 ├── Login a ECR
 ├── Lanza SageMaker Processing Job
 │     ├── Imagen: ECR :processing-latest
-│     ├── Input:  s3://practica.mlops.2026/ejemplo.studio/
-│     └── Output: s3://practica.mlops.2026/ejemplo.studio/processed/
+│     ├── Input:  s3://sonia-practicamlops/data/raw
+│     └── Output: s3://sonia-practicamlops/data/processed/
 └── Espera que el job complete (~5-10 min)
 ```
 
@@ -496,6 +503,8 @@ El proyecto genera automáticamente:
 
 El pipeline actual procesa los datos con SageMaker y los deja listos en S3. El siguiente paso es **lanzar un SageMaker Training Job** que tome esos datos procesados y entrene el modelo.
 
+Nota: En esta práctica se implementó correctamente el SageMaker Processing Job. El Training Job queda como extensión futura.
+
 ### Lo que tienes disponible
 
 - ✅ Imagen Docker `train-latest` ya publicada en ECR
@@ -539,10 +548,10 @@ Este proyecto está bajo la Licencia MIT. Ver archivo [LICENSE](LICENSE) para m�
 
 ## 👤 Autor
 
-**Ivan Hurtado**
+**Sonia Valeria Avilés Sacoto**
 
-- GitHub: [@ivhuco](https://github.com/ivhuco)
-- Repositorio: [practica_ci_cd](https://github.com/ivhuco/practica_ci_cd)
+- GitHub: [@sonitavaleria86](https://github.com/sonitavaleria86)
+- Repositorio: [practica_ci_cd](https://github.com/sonitavaleria86/practica_ci_cd)
 
 ## 🙏 Agradecimientos
 
