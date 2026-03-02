@@ -57,6 +57,24 @@ jobs:
       run: |
         MODEL_FILE="${{ github.event.inputs.model_filename || 'titanic_model_random_forest.pkl' }}"
         python src/evaluate.py --model $MODEL_FILE --use-test
+
+    - name: Install jq
+      run: sudo apt-get install -y jq
+
+    - name: Check accuracy threshold (>= 0.6)
+      run: |
+        echo "Reading evaluation results..."
+
+        ACC=$(jq .metrics.accuracy reports/evaluation_results.json)
+
+        echo "Model accuracy: $ACC"
+
+        if (( $(echo "$ACC < 0.6" | bc -l) )); then
+          echo "❌ Model accuracy below required threshold (0.6)"
+          exit 1
+        else
+          echo "✅ Model passed accuracy threshold"
+        fi
     
     - name: Upload evaluation results
       uses: actions/upload-artifact@v4
